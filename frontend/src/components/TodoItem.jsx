@@ -6,7 +6,7 @@ const TodoItem = ({ title, description }) => {
       <p className="text-lg font-bold px-6 py-2">{title}</p>
       <p className="px-6">{description}</p>
       <div className="flex  justify-end mx-6">
-        <button className="bg-amber-500 text-white py-2 px-10 rounded-lg font-semibold">
+        <button className="bg-amber-500 text-white py-2 px-10 rounded-lg font-semibold cursor-pointer">
           Done
         </button>
       </div>

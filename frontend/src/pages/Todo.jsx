@@ -42,8 +42,8 @@ const Todo = () => {
     }
   };
   return (
-    <div className="xl:flex gap-5 md:gap-10 lg:gap-16 xl:gap-32 2xl-40 py-10 px-5 xl:px-16 justify-center">
-      <div className="xl:w-1/3">
+    <div className="lg:flex gap-5 md:gap-10 lg:gap-8 xl:gap-10 2xl-40 py-10 px-5 xl:px-16 justify-center">
+      <div className="lg:w-1/2">
         <h1 className="text-4xl font-bold">Add a Task</h1>
 
         <div className="mt-6 ">
