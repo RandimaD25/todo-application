@@ -3,6 +3,7 @@ import TodoItem from "../components/TodoItem";
 import { createTodo } from "../services/create-todo.service";
 import { getTodos } from "../services/get-todos.service";
 import { toast } from "react-toastify";
+import { completeTodo } from "../services/complete-todo.service";
 
 const Todo = () => {
   const [title, setTitle] = useState("");
@@ -38,6 +39,21 @@ const Todo = () => {
       }
     } catch (error) {
       toast.error(error.error || "Something went wrong");
+    }
+  };
+
+  const handleComplete = async (id) => {
+    try {
+      const data = await completeTodo({ id });
+      if (data.success) {
+        toast.success(data.message);
+
+        setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
     }
   };
   return (
@@ -80,8 +96,8 @@ const Todo = () => {
             </div>
 
             <button
-              type="submit"
               className="bg-amber-500 font-semibold text-white py-2 px-3 rounded-lg w-full cursor-pointer"
+              type="submit"
             >
               Add
             </button>
@@ -91,9 +107,10 @@ const Todo = () => {
 
       <div className="">
         {todos.length === 0 ? (
-          <p>No Todo Tasks found</p>
+          <></>
         ) : (
           [...todos]
+            .filter((todo) => !todo.isCompleted)
             .sort((a, b) => b.id - a.id)
             .slice(0, 5)
             .map((todo) => (
@@ -101,6 +118,7 @@ const Todo = () => {
                 key={todo.id}
                 title={todo.title}
                 description={todo.description}
+                onComplete={() => handleComplete(todo.id)}
               />
             ))
         )}

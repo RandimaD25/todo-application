@@ -7,7 +7,7 @@ export const completeTodo = async ({ id }) => {
     const { data } = await axios.put(
       `${backendUrl}/api/task/complete-todo/${id}`
     );
-    console.log(data);
+
     return data;
   } catch (error) {
     throw error.response?.data || error;
