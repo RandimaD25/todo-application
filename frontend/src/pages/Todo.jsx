@@ -12,7 +12,6 @@ const Todo = () => {
   const fetchTodos = async () => {
     try {
       const data = await getTodos();
-      console.log(data.todos);
       setTodos(data.todos);
     } catch (error) {
       toast.error(error.message || "Failed to load todos");
