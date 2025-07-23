@@ -12,3 +12,11 @@ export async function addTodo(title, description) {
   );
   return { id: result.insertId, title, description };
 }
+
+export async function updateTodo(id) {
+  const [result] = await db.query(
+    "UPDATE task SET isCompleted = true WHERE id = ?",
+    [id]
+  );
+  return { affectedRows: result.affectedRows };
+}
