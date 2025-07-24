@@ -106,22 +106,18 @@ const Todo = () => {
       </div>
 
       <div className="">
-        {todos.length === 0 ? (
-          <></>
-        ) : (
-          [...todos]
-            .filter((todo) => !todo.isCompleted)
-            .sort((a, b) => b.id - a.id)
-            .slice(0, 5)
-            .map((todo) => (
-              <TodoItem
-                key={todo.id}
-                title={todo.title}
-                description={todo.description}
-                onComplete={() => handleComplete(todo.id)}
-              />
-            ))
-        )}
+        {[...(todos || [])]
+          .filter((todo) => !todo.isCompleted)
+          .sort((a, b) => b.id - a.id)
+          .slice(0, 5)
+          .map((todo) => (
+            <TodoItem
+              key={todo.id}
+              title={todo.title}
+              description={todo.description}
+              onComplete={() => handleComplete(todo.id)}
+            />
+          ))}
       </div>
     </div>
   );

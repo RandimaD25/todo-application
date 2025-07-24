@@ -1,0 +1,45 @@
+services:
+  # MySQL Database
+  mysql:
+    image: mysql:8
+    container_name: mysql-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: todo_app
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  # Backend
+  backend:
+    build: ./backend
+    container_name: todo-backend
+    depends_on:
+      - mysql
+    environment:
+      DB_HOST: mysql
+      DB_USER: user
+      DB_PASSWORD: password
+      DB_NAME: todo_app
+      PORT: 4000
+    ports:
+      - "4000:4000"
+
+  # Frontend
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_BACKEND_URL: http://localhost:4000
+    container_name: todo-frontend
+    depends_on:
+      - backend
+    ports:
+      - "3000:80"
+
+volumes:
+  mysql-data:
