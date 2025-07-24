@@ -1,6 +1,5 @@
 import axios from "axios";
-
-export const backendUrl = import.meta.env.VITE_BACKEND_URL;
+import { backendUrl } from "../config";
 
 export const createTodo = async ({ title, description }) => {
   try {
