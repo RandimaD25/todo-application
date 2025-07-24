@@ -1,7 +1,7 @@
 import { completeTodo } from "../../controllers/todoController.js";
 import * as todoModel from "../../models/todoModel.js";
 
-describe("Unit Test: completeTodo", () => {
+describe("completeTodo Controller", () => {
   const mockRes = {
     json: jest.fn(),
   };

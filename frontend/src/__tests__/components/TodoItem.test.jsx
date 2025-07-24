@@ -10,20 +10,20 @@ describe("TodoItem Component", () => {
     onComplete: jest.fn(),
   };
 
-  test("renders title and description correctly", () => {
+  it("renders title and description correctly", () => {
     render(<TodoItem {...defaultProps} />);
     expect(screen.getByText(defaultProps.title)).toBeInTheDocument();
     expect(screen.getByText(defaultProps.description)).toBeInTheDocument();
   });
 
-  test("calls onComplete callback when Done button is clicked", () => {
+  it("calls onComplete callback when Done button is clicked", () => {
     render(<TodoItem {...defaultProps} />);
     const doneButton = screen.getByRole("button", { name: /done/i });
     fireEvent.click(doneButton);
     expect(defaultProps.onComplete).toHaveBeenCalledTimes(1);
   });
 
-  test("button has correct text and className", () => {
+  it("button has correct text and className", () => {
     render(<TodoItem {...defaultProps} />);
     const doneButton = screen.getByRole("button", { name: /done/i });
     expect(doneButton).toBeInTheDocument();

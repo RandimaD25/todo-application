@@ -6,6 +6,10 @@ jest.mock("../../config/database.js", () => ({
 }));
 
 describe("addTodo", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("should insert todo and return inserted data", async () => {
     const mockInsertId = 5;
     db.query.mockResolvedValueOnce([{ insertId: mockInsertId }]);

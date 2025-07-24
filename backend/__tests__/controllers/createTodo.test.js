@@ -1,7 +1,7 @@
 import { createTodo } from "../../controllers/todoController.js";
 import * as todoModel from "../../models/todoModel.js";
 
-describe("Unit Test: createTodo", () => {
+describe("createTodo Controller", () => {
   const mockReq = {
     body: {
       title: "Sample Todo",

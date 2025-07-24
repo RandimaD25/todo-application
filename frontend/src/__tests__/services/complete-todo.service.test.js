@@ -3,7 +3,7 @@ import { completeTodo } from "../../services/complete-todo.service";
 
 // Mock config.js to inject backendUrl for tests
 jest.mock("../../config", () => ({
-  backendUrl: "http://localhost:4000", // ✅ This works!
+  backendUrl: "http://localhost:4000",
 }));
 
 jest.mock("axios");

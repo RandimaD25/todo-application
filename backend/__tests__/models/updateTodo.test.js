@@ -6,6 +6,10 @@ jest.mock("../../config/database.js", () => ({
 }));
 
 describe("updateTodo", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("should mark a todo as completed and return affected rows", async () => {
     db.query.mockResolvedValueOnce([{ affectedRows: 1 }]);
 

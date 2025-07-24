@@ -11,7 +11,7 @@ jest.mock("react-toastify", () => ({
   },
 }));
 
-// Mock environment variable access in your services
+// Mock environment variable access in services
 jest.mock("../../services/create-todo.service", () => ({
   createTodo: jest.fn(),
 }));
@@ -22,7 +22,6 @@ jest.mock("../../services/complete-todo.service", () => ({
   completeTodo: jest.fn(),
 }));
 
-// Mock TodoItem so tests isolate Todo logic
 jest.mock(
   "../../components/TodoItem",
   () =>
@@ -46,14 +45,14 @@ describe("Todo Page", () => {
     jest.clearAllMocks();
   });
 
-  test("renders form elements correctly", () => {
+  it("renders form elements correctly", () => {
     render(<Todo />);
     expect(screen.getByLabelText(/title/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/description/i)).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /add/i })).toBeInTheDocument();
   });
 
-  test("fetches and displays todos", async () => {
+  it("fetches and displays todos", async () => {
     getTodos.mockResolvedValue({
       todos: [
         {
@@ -71,7 +70,7 @@ describe("Todo Page", () => {
     expect(screen.getByText("Sample Description")).toBeInTheDocument();
   });
 
-  test("submits form and calls createTodo", async () => {
+  it("submits form and calls createTodo", async () => {
     getTodos.mockResolvedValue({ todos: [] });
     createTodo.mockResolvedValue({
       success: true,
@@ -99,7 +98,7 @@ describe("Todo Page", () => {
     });
   });
 
-  test("calls completeTodo when Done is clicked", async () => {
+  it("calls completeTodo when Done is clicked", async () => {
     getTodos.mockResolvedValue({
       todos: [
         {
@@ -127,7 +126,7 @@ describe("Todo Page", () => {
     });
   });
 
-  test("shows error toast if getTodos fails", async () => {
+  it("shows error toast if getTodos fails", async () => {
     getTodos.mockRejectedValue(new Error("Failed to load"));
 
     render(<Todo />);
@@ -137,7 +136,7 @@ describe("Todo Page", () => {
     });
   });
 
-  test("shows error toast if createTodo fails", async () => {
+  it("shows error toast if createTodo fails", async () => {
     getTodos.mockResolvedValue({ todos: [] });
     createTodo.mockRejectedValue({ error: "Create failed" });
 
@@ -157,7 +156,7 @@ describe("Todo Page", () => {
     });
   });
 
-  test("shows error toast if completeTodo fails", async () => {
+  it("shows error toast if completeTodo fails", async () => {
     getTodos.mockResolvedValue({
       todos: [
         {

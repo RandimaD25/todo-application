@@ -2,7 +2,6 @@ import axios from "axios";
 import { createTodo } from "../../services/create-todo.service";
 import { backendUrl } from "../../config";
 
-// Automatically mock axios
 jest.mock("axios");
 jest.mock("../../config", () => ({
   backendUrl: "http://localhost:4000", // mock URL
