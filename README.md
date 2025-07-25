@@ -40,8 +40,8 @@ docker-compose up --build
 
 Application URLs:
 
-    Frontend: http://localhost:3000
-    Backend API: http://localhost:4000
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:4000
 
 ---
 
@@ -87,7 +87,7 @@ cd backend
 npx jest --coverage 
 ```
 
-Author: 
+## Author: 
 
-    Name: Randima Dias
-    GitHub: [@RandimaD25](https://github.com/RandimaD25)
+- Name: Randima Dias
+- GitHub: [@RandimaD25](https://github.com/RandimaD25)
