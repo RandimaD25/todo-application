@@ -34,12 +34,12 @@ git clone https://github.com/RandimaD25/todo-application.git
 cd todo-application
 ```
 
-# Run all services (frontend, backend, MySQL)
 ```bash
+# Run all services (frontend, backend, MySQL)
 docker-compose up --build
 ```
 
-# Application URLs
+Application URLs
 Frontend: http://localhost:3000
 Backend API: http://localhost:4000
 
@@ -60,13 +60,13 @@ When Docker Compose runs for the first time, this script will automatically:
 
 ### 4. Building
 
-# Build frontend only
 ```bash
+# Build frontend only
 docker-compose build frontend
 ```
 
-# Build all services (Frontend, Backend, Database)
 ```bash
+# Build all services (Frontend, Backend, Database)
 docker-compose build
 ```
 
@@ -74,18 +74,19 @@ docker-compose build
 
 ### 5. Running test
 
-# Frontend test coverage
 ```bash
+# Frontend test coverage
 cd frontend
 npx jest --coverage 
 ```
 
-# backend test coverage
 ```bash
+# backend test coverage
 cd backend
 npx jest --coverage 
 ```
 
-Author
-Name: Randima Dias
-GitHub: @RandimaD25
+Author: 
+
+    Name: Randima Dias
+    GitHub: @RandimaD25
